@@ -1,0 +1,19 @@
+<%- include('./includes/header') %>
+</head>
+
+<body>
+    <main>
+        <form class="task-form" action="/add-task" method="post">
+            <div class="form-control">
+                <label for="taskTitle">Task</label>
+                <input type="text" name="task">
+                <button class="btn" type="submit"> + </button>
+            </div>
+            <ul class="ul-task-list">
+                <li class="li-task-list">hello</li>
+            </ul>
+        </form>
+    </main>
+</body>
+
+<%- include('./includes/footer.ejs') %>

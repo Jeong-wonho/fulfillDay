@@ -18,8 +18,9 @@ app.set("views", "views");
 //router add+
 const taskRoutes = require('./routes/task.routes.js');
 
-app.use(express.static('public'))
 app.use(express.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // router settings
 app.use(taskRoutes);
