@@ -26,7 +26,7 @@
                         <form class="task-put-form" action="/update-task" method="post">
                             <input class="updateTaskId" type="hidden" value=<%= task._id %> name="taskId">
                             <input class="updateTaskValue" type="hidden" value="<%= task.taskDesc %>"" name="taskDesc">
-                            <button id=<%= index %> class="btn put-btn" type="button" onclick="clickTest('<%= task._id %>',<%= index %>)">수정</button>
+                            <button id=<%= index %> class="btn put-btn" type="button" onclick="updateClick('<%= task._id %>',<%= index %>)">수정</button>
                         </form>
                     </div>
                 <% }) %>
@@ -34,41 +34,7 @@
         <% } %>
     </main>
     <script>
-        let button = document.getElementsByClassName('put-btn');
         
-        const clickTest = (task_id, index) => {
-            console.log('clickTest');
-            const taskInput = document.getElementById(task_id);
-            const sendButton = document.getElementById(index);
-            taskInput.readOnly = taskInput.readOnly ? false : true; 
-
-            changeValue(index, taskInput, sendButton);
-            changeButton(taskInput, sendButton);
-        }
-        
-        const changeButton = (input, button) => {
-                if (input.readOnly) {
-                    button.type = "submit"
-                } else {
-                    button.type = "button"
-                }
-            console.log(button.type)
-        }
-
-        const changeValue = (index, input, button) => {
-            const updateInput = document.getElementsByClassName('updateTaskValue')[index];
-            input.setAttribute('value', input.value);
-            updateInput.setAttribute('value', input.value);
-            console.log(`this is a Input values ${input.value}`)
-            
-            console.log(`this is a updateInput values ${updateInput.value}`)
-        }
-        
-        // input text를 가져올 데이터
-        const getRaw = (taskInput) => {
-            const raw = {taskId: taskInput.id , taskDesc: taskInput.value}
-            return raw;
-        }
     </script>
 </body>
 
