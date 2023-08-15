@@ -9,15 +9,14 @@ const { Schema } = mongoose;
  * completed:
  */
 const taskSchema = new Schema({
-    task: {type: String, default: true},
+    taskDesc: {type: String, default: true},
     // description add+ 
-    totalTime: {type: Date, default: false},
+    //totalTime pomodoroTimer 구현 후 구현 예정
+    // totalTime: {type: Date, default: false},
     tag:{type: String, default: false},
     completed:{type: String, default: false}
 }, {
     timestamps: true,
 });
-
-
 
 module.exports = mongoose.model('Task', taskSchema);
