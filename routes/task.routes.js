@@ -1,7 +1,7 @@
 //npm modules
 const express = require('express');
 //controller
-const taskController = require('../controller/task.controller.js')
+const taskController = require('../controllers/task.controller.js')
 
 const router = express.Router();
 
