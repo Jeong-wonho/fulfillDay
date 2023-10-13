@@ -61,25 +61,36 @@
             <div class="title">Add Event</div>
             <i class="fas fa-times close"></i>
           </div>
+          <form action="#">
           <div class="add-event-body">
-            <div class="add-event-input">
+            <div class="add-event-tag">
               <input type="text" placeholder="Event Name" class="event-name" />
             </div>
-            <div class="add-event-input">
-              <input
+            <div class="add-event-tag">
+              <input type="text" class="event-time-from" placeholder="choice the status" readonly>
+              <div class="add-event-tag event-option">
+                <div class="event-status to-do">To Do</div>
+                <div class="event-status in-progress">In progress</div>
+                <div class="event-status done">Done</div>
+              </div>
+              <!-- <input
                 type="text"
-                placeholder="Event Time From"
+                placeholder="selected tag"
                 class="event-time-from"
-              />
+                readonly
+              /> -->
             </div>
-            <div class="add-event-input">
+            <div class="add-event-tag">
               <input
                 type="text"
-                placeholder="Event Time To"
+                placeholder="selected lable"
                 class="event-time-to"
+                readonly
               />
+
             </div>
           </div>
+        </form>
           <div class="add-event-footer">
             <button class="add-event-btn">Add Event</button>
           </div>
