@@ -20,10 +20,11 @@ exports.getTasks = async (req, res, next) => {
  *  Todo-list post
  */
 exports.postTasks = async (req, res, next) => {
-  const task = req.body.taskDesc;
-  const tag = req.body.tag;
-  //진행사항으로 변경이 필요하다.
-  const completed = req.body.completed;
+  // const task = req.body.taskDesc;
+  // const tag = req.body.tag;
+  // //진행사항으로 변경이 필요하다.
+  // const completed = req.body.completed;
+  const {task , tag, completed}= req.body;
   const todo = new Task({
     taskDesc: task,
     tag: tag,
@@ -44,10 +45,11 @@ exports.postTasks = async (req, res, next) => {
  * Todo-list update
  */
 exports.updateTask = async (req, res, next) => {
-  const taskId = req.body.taskId;
-  const taskDesc = req.body.taskDesc;
-  const tag = req.body.tag;
-  const completed = req.body.completed;
+  // const taskId = req.body.taskId;
+  // const taskDesc = req.body.taskDesc;
+  // const tag = req.body.tag;
+  // const completed = req.body.completed;
+  const {taskId, taskDesc, tag, completed} = req.body
 
   try {
     const task = await Task.findById(taskId)
@@ -72,7 +74,8 @@ exports.updateTask = async (req, res, next) => {
  * Todo-list delete
  */
 exports.deleteTask = async (req, res, next) => {
-  const taskId = req.body.taskId;
+  const {taskId} = req.body;
+
   try {
     const task = await Task.findById(taskId);
 

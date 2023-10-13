@@ -28,17 +28,18 @@ app.use((req, res, next) => {
 
 //router add+
 const taskRoutes = require("./routes/task.routes.js");
-
+const pomodoroRoutes = require("./routes/pomodoro.routes.js");
 
 // router settings
 app.use("/task", taskRoutes);
+app.use("/pomodoro", pomodoroRoutes);
 
 //mongoose Connection
-mongoose.connect(dbUri).then((result) => {
-  app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-  });
-}).catch((err) => console.log(err));
-
-// listen for requests
-
+mongoose
+  .connect(dbUri)
+  .then((result) => {
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}`);
+    });
+  })
+  .catch((err) => console.log(err));
