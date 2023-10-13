@@ -1,41 +1,44 @@
-const dotenv = require('dotenv');
+const path = require("path");
+
+const dotenv = require("dotenv");
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
 dotenv.config();
-
-const express = require('express');
-
-const path = require('path');
-const mongoose = require('mongoose');
 
 const dbUri = process.env.DB_URI;
 const port = process.env.PORT;
 
-
 const app = express();
 
-app.set("view engine", "ejs");
-app.set("views", "views");
+//bodyParser.json() => application/json
+app.use(bodyParser.json());
+
+//cors error solved
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTION, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 //router add+
-const taskRoutes = require('./routes/task.routes.js');
-
-app.use(express.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname, 'public')));
+const taskRoutes = require("./routes/task.routes.js");
 
 
 // router settings
-app.use(taskRoutes);
+app.use("/task", taskRoutes);
 
 //mongoose Connection
-mongoose.connect(dbUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }).then(result => {
-    console.log("connection mongoDB");
-  }).catch(error => {
-    console.log(error)
-  })
-
-// listen for requests
-app.listen(port, () => {
+mongoose.connect(dbUri).then((result) => {
+  app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
+}).catch((err) => console.log(err));
+
+// listen for requests
+
