@@ -38,8 +38,11 @@ app.use("/pomodoro", pomodoroRoutes);
 mongoose
   .connect(dbUri)
   .then((result) => {
-    app.listen(port, () => {
-      console.log(`Server is listening on port ${port}`);
-    });
+    // app.listen(port, () => {
+    //   console.log(`Server is listening on port ${port}`);
+    // });
+    console.log("mongoose is connected");
   })
   .catch((err) => console.log(err));
+
+module.exports = app;
