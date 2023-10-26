@@ -16,9 +16,10 @@ const PomodoroSchema = new Schema({
     type: Date,
     required: true
   },
-  taskName: {
-    type: String,
-    required: true
+  taskDesc: {
+    type: Schema.Types.ObjectId,
+    ref: 'Task', 
+    required:true
   }
 });
 
